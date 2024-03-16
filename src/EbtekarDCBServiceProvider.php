@@ -19,7 +19,7 @@ class EbtekarDCBServiceProvider extends PackageServiceProvider
             ->name('ebtekardcb')
             ->hasConfigFile()
             ->hasViews();
-//            ->hasMigration('create_ebtekardcb_table')
-//            ->hasCommand(EbtekarDCBCommand::class);
+        //            ->hasMigration('create_ebtekardcb_table')
+        //            ->hasCommand(EbtekarDCBCommand::class);
     }
 }

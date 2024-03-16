@@ -12,6 +12,7 @@ use Ybreaka98\EbtekarDCB\Responses\ProtectedScriptResponse;
 class EbtekarDCB implements EbtekarInterface
 {
     private string $ebtekarBaseUrl;
+
     private string $token;
 
     /**
@@ -28,14 +29,14 @@ class EbtekarDCB implements EbtekarInterface
      */
     public function requestProtectedScript(string $targeted_element): ProtectedScriptResponse
     {
-        if (!Str::startsWith($targeted_element, '#')) {
-            $targeted_element = '#' . $targeted_element;
+        if (! Str::startsWith($targeted_element, '#')) {
+            $targeted_element = '#'.$targeted_element;
         }
 
         $protectResponse = Http::withToken($this->token)
-            ->get($this->ebtekarBaseUrl . 'protected-script', [
+            ->get($this->ebtekarBaseUrl.'protected-script', [
                 'targeted_element' => $targeted_element,
-                'pl' => ["ebtekar"]
+                'pl' => ['ebtekar'],
             ]);
 
         return new ProtectedScriptResponse($protectResponse, $this->token);
@@ -48,7 +49,7 @@ class EbtekarDCB implements EbtekarInterface
     {
 
         $this->validateMsisdn($msisdn);
-        $response = Http::withToken($this->token)->post($this->ebtekarBaseUrl . 'login', [
+        $response = Http::withToken($this->token)->post($this->ebtekarBaseUrl.'login', [
             'msisdn' => $msisdn,
             'transaction_identify' => $transaction_identify,
             'device_type' => $device_type,
@@ -64,7 +65,7 @@ class EbtekarDCB implements EbtekarInterface
     {
         $this->validateMsisdn($msisdn);
         $this->validateOtp($otp);
-        $response = Http::withToken($this->token)->post($this->ebtekarBaseUrl . 'login-confirm', [
+        $response = Http::withToken($this->token)->post($this->ebtekarBaseUrl.'login-confirm', [
             'msisdn' => $msisdn,
             'otp' => $otp,
             'device_type' => $device_type,
@@ -79,7 +80,7 @@ class EbtekarDCB implements EbtekarInterface
     public function upgrade(string $msisdn, string $uuid): EbtekarResponse
     {
         $this->validateMsisdn($msisdn);
-        $response = Http::withToken($this->token)->post($this->ebtekarBaseUrl . 'upgrade', [
+        $response = Http::withToken($this->token)->post($this->ebtekarBaseUrl.'upgrade', [
             'msisdn' => $msisdn,
             'uuid' => $uuid,
         ]);
@@ -90,11 +91,11 @@ class EbtekarDCB implements EbtekarInterface
     /**
      * @throws Exception
      */
-    public function upgradeConfirm(string $msisdn, string $otp, string $uuid , $device_token = 'android'): EbtekarResponse
+    public function upgradeConfirm(string $msisdn, string $otp, string $uuid, $device_token = 'android'): EbtekarResponse
     {
         $this->validateMsisdn($msisdn);
         $this->validateOtp($otp);
-        $response = Http::withToken($this->token)->post($this->ebtekarBaseUrl . 'upgrade-confirm', [
+        $response = Http::withToken($this->token)->post($this->ebtekarBaseUrl.'upgrade-confirm', [
             'msisdn' => $msisdn,
             'uuid' => $uuid,
             'otp' => $otp,
@@ -110,7 +111,7 @@ class EbtekarDCB implements EbtekarInterface
     public function subscriptionDetails(string $msisdn): EbtekarResponse
     {
         $this->validateMsisdn($msisdn);
-        $response = Http::withToken($this->token)->get($this->ebtekarBaseUrl . 'subscriber-details', [
+        $response = Http::withToken($this->token)->get($this->ebtekarBaseUrl.'subscriber-details', [
             'msisdn' => $msisdn,
         ]);
 
@@ -123,7 +124,7 @@ class EbtekarDCB implements EbtekarInterface
     public function directUnsubscribe(string $msisdn): EbtekarResponse
     {
         $this->validateMsisdn($msisdn);
-        $response = Http::withToken($this->token)->post($this->ebtekarBaseUrl . 'direct-unsubscribe', [
+        $response = Http::withToken($this->token)->post($this->ebtekarBaseUrl.'direct-unsubscribe', [
             'msisdn' => $msisdn,
         ]);
 
@@ -136,7 +137,7 @@ class EbtekarDCB implements EbtekarInterface
     public function unsubscribe(string $msisdn): EbtekarResponse
     {
         $this->validateMsisdn($msisdn);
-        $response = Http::withToken($this->token)->post($this->ebtekarBaseUrl . 'unsubscribe', [
+        $response = Http::withToken($this->token)->post($this->ebtekarBaseUrl.'unsubscribe', [
             'msisdn' => $msisdn,
         ]);
 
@@ -150,7 +151,7 @@ class EbtekarDCB implements EbtekarInterface
     {
         $this->validateMsisdn($msisdn);
         $this->validateOtp($otp);
-        $response = Http::withToken($this->token)->post($this->ebtekarBaseUrl . 'unsubscribe-confirm', [
+        $response = Http::withToken($this->token)->post($this->ebtekarBaseUrl.'unsubscribe-confirm', [
             'msisdn' => $msisdn,
             'otp' => $otp,
             'device_type' => $device_token,
@@ -165,7 +166,7 @@ class EbtekarDCB implements EbtekarInterface
     public function subscriptionActivation(string $msisdn): EbtekarResponse
     {
         $this->validateMsisdn($msisdn);
-        $response = Http::withToken($this->token)->post($this->ebtekarBaseUrl . 'subscription-activation', [
+        $response = Http::withToken($this->token)->post($this->ebtekarBaseUrl.'subscription-activation', [
             'msisdn' => $msisdn,
         ]);
 
@@ -179,7 +180,7 @@ class EbtekarDCB implements EbtekarInterface
     {
         $this->validateMsisdn($msisdn);
         $this->validateOtp($otp);
-        $response = Http::withToken($this->token)->post($this->ebtekarBaseUrl . 'subscription-activation-confirm', [
+        $response = Http::withToken($this->token)->post($this->ebtekarBaseUrl.'subscription-activation-confirm', [
             'msisdn' => $msisdn,
             'otp' => $otp,
             'device_type' => $device_token,
@@ -190,9 +191,9 @@ class EbtekarDCB implements EbtekarInterface
 
     public function authenticate()
     {
-        $response = Http::post($this->ebtekarBaseUrl . 'auth-login', [
+        $response = Http::post($this->ebtekarBaseUrl.'auth-login', [
             'email' => config('ebtekardcb.email'),
-            'password' => config('ebtekardcb.password')
+            'password' => config('ebtekardcb.password'),
         ]);
 
         if ($response->status() === 200) {
@@ -207,7 +208,7 @@ class EbtekarDCB implements EbtekarInterface
      */
     private function validateMsisdn(string $msisdn): void
     {
-        if (!preg_match('/^21809[1-6][0-9]{7}$/i', $msisdn)) {
+        if (! preg_match('/^21809[1-6][0-9]{7}$/i', $msisdn)) {
             throw new Exception('Invalid MSISDN');
         }
     }
@@ -217,7 +218,7 @@ class EbtekarDCB implements EbtekarInterface
      */
     private function validateOtp(string $otp): void
     {
-        if (!preg_match('/^[0-9]{4}$/i', $otp)) {
+        if (! preg_match('/^[0-9]{4}$/i', $otp)) {
             throw new Exception('Invalid OTP');
         }
     }
