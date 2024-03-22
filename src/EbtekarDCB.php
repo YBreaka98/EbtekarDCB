@@ -9,6 +9,7 @@ use Ybreaka98\EbtekarDCB\Interfaces\EbtekarInterface;
 use Ybreaka98\EbtekarDCB\Responses\ConfirmLoginResponse;
 use Ybreaka98\EbtekarDCB\Responses\EbtekarResponse;
 use Ybreaka98\EbtekarDCB\Responses\ProtectedScriptResponse;
+use Ybreaka98\EbtekarDCB\Responses\SubscriptionDetailsResponse;
 use Ybreaka98\EbtekarDCB\Trait\Validation;
 
 class EbtekarDCB implements EbtekarInterface
@@ -110,14 +111,14 @@ class EbtekarDCB implements EbtekarInterface
     /**
      * @throws Exception
      */
-    public function subscriptionDetails(string $msisdn): EbtekarResponse
+    public function subscriptionDetails(string $msisdn): SubscriptionDetailsResponse
     {
         $this->validateMsisdn($msisdn);
         $response = Http::withToken($this->token)->get($this->ebtekarBaseUrl.'subscriber-details', [
             'msisdn' => $msisdn,
         ]);
 
-        return new EbtekarResponse($response, $this->token);
+        return new SubscriptionDetailsResponse($response, $this->token);
     }
 
     /**
