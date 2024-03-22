@@ -11,7 +11,6 @@ class ConfirmLoginResponse extends EbtekarResponse
         parent::__construct($response, $token);
     }
 
-
     public function getSubscriberStatus(): string
     {
         return $this->getJson()['success']['subscriber'];

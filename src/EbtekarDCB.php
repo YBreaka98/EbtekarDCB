@@ -14,6 +14,7 @@ use Ybreaka98\EbtekarDCB\Trait\Validation;
 class EbtekarDCB implements EbtekarInterface
 {
     use Validation;
+
     private string $ebtekarBaseUrl;
 
     private string $token;
