@@ -6,7 +6,6 @@ use Exception;
 
 trait Validation
 {
-
     /**
      * @throws Exception
      */

@@ -1,12 +1,15 @@
 <?php
 
 namespace Ybreaka98\EbtekarDCB\Responses;
+
 use Illuminate\Http\Client\Response;
 
 class EbtekarResponse
 {
     protected int $statusCode;
+
     protected ?Response $response;
+
     protected string $token;
 
     public function __construct(Response $response, string $token)
@@ -75,5 +78,4 @@ class EbtekarResponse
     {
         return $this->getMessageCode() == $code;
     }
-
 }
