@@ -6,11 +6,14 @@ use Exception;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Str;
 use Ybreaka98\EbtekarDCB\Interfaces\EbtekarInterface;
+use Ybreaka98\EbtekarDCB\Responses\ConfirmLoginResponse;
 use Ybreaka98\EbtekarDCB\Responses\EbtekarResponse;
 use Ybreaka98\EbtekarDCB\Responses\ProtectedScriptResponse;
+use Ybreaka98\EbtekarDCB\Trait\Validation;
 
 class EbtekarDCB implements EbtekarInterface
 {
+    use Validation;
     private string $ebtekarBaseUrl;
 
     private string $token;
@@ -47,7 +50,6 @@ class EbtekarDCB implements EbtekarInterface
      */
     public function login(string $msisdn, string $transaction_identify, string $device_type = 'android'): EbtekarResponse
     {
-
         $this->validateMsisdn($msisdn);
         $response = Http::withToken($this->token)->post($this->ebtekarBaseUrl.'login', [
             'msisdn' => $msisdn,
@@ -61,7 +63,7 @@ class EbtekarDCB implements EbtekarInterface
     /**
      * @throws Exception
      */
-    public function confirmLogin(string $msisdn, string $otp, string $device_type = 'android'): EbtekarResponse
+    public function confirmLogin(string $msisdn, string $otp, string $device_type = 'android'): ConfirmLoginResponse
     {
         $this->validateMsisdn($msisdn);
         $this->validateOtp($otp);
@@ -71,7 +73,7 @@ class EbtekarDCB implements EbtekarInterface
             'device_type' => $device_type,
         ]);
 
-        return new EbtekarResponse($response, $this->token);
+        return new ConfirmLoginResponse($response, $this->token);
     }
 
     /**
@@ -200,26 +202,6 @@ class EbtekarDCB implements EbtekarInterface
             return $response->json()['data']['access_token'];
         } else {
             return response()->json(['message' => 'Failed to authenticate', 'status' => 'error', 'error' => $response->body()], $response->status());
-        }
-    }
-
-    /**
-     * @throws Exception
-     */
-    private function validateMsisdn(string $msisdn): void
-    {
-        if (! preg_match('/^21809[1-6][0-9]{7}$/i', $msisdn)) {
-            throw new Exception('Invalid MSISDN');
-        }
-    }
-
-    /**
-     * @throws Exception
-     */
-    private function validateOtp(string $otp): void
-    {
-        if (! preg_match('/^[0-9]{4}$/i', $otp)) {
-            throw new Exception('Invalid OTP');
         }
     }
 }
