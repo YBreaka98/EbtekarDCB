@@ -24,7 +24,6 @@ class EbtekarDCBPages implements EbtekarPagesInterface
         $this->token = app(EbtekarDCB::class)->authenticate();
     }
 
-
     public function login($authUrl, $projectUrl)
     {
         return view('ebtekardcb::login', ['authUrl' => $authUrl, 'projectUrl' => $projectUrl]);
@@ -49,11 +48,11 @@ class EbtekarDCBPages implements EbtekarPagesInterface
     {
         try {
 
-            $response = Http::withToken($this->token)->get($this->ebtekarBaseUrl . 'subscription-list', [
-                'msisdn' => $msisdn
+            $response = Http::withToken($this->token)->get($this->ebtekarBaseUrl.'subscription-list', [
+                'msisdn' => $msisdn,
             ]);
 
-            $subscriberDetails = Http::withToken($this->token)->get($this->ebtekarBaseUrl . 'subscriber-details', [
+            $subscriberDetails = Http::withToken($this->token)->get($this->ebtekarBaseUrl.'subscriber-details', [
                 'msisdn' => $msisdn,
             ]);
 
@@ -61,6 +60,7 @@ class EbtekarDCBPages implements EbtekarPagesInterface
                 return redirect()->route('error-500');
             }
             $data = $response->json();
+
             return view('ebtekardcb::subscription-list', ['subscriptions' => $data['success']['list'],
                 'msisdn' => $data['success']['msisdn'],
                 'current_subscription' => $subscriberDetails['success']['details']['subscription_name'],
@@ -78,7 +78,7 @@ class EbtekarDCBPages implements EbtekarPagesInterface
 
     public function profile($msisdn, $url)
     {
-        $response = Http::withToken($this->token)->get($this->ebtekarBaseUrl . 'subscriber-details', [
+        $response = Http::withToken($this->token)->get($this->ebtekarBaseUrl.'subscriber-details', [
             'msisdn' => $msisdn,
         ]);
 
@@ -94,5 +94,4 @@ class EbtekarDCBPages implements EbtekarPagesInterface
     {
         return view('ebtekardcb::subscription-activation-confirm', ['msisdn' => $msisdn, 'url' => $url]);
     }
-
 }
