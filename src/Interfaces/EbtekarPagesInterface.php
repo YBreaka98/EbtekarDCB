@@ -2,9 +2,6 @@
 
 namespace Ybreaka98\EbtekarDCB\Interfaces;
 
-use Ybreaka98\EbtekarDCB\Responses\EbtekarResponse;
-use Ybreaka98\EbtekarDCB\Responses\ProtectedScriptResponse;
-
 interface EbtekarPagesInterface
 {
     public function login($authUrl, $projectUrl);
@@ -24,6 +21,4 @@ interface EbtekarPagesInterface
     public function unSubscribeConfirm($msisdn, $url);
 
     public function subscriptionActivationConfirm($msisdn, $url);
-
-
 }
