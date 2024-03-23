@@ -71,7 +71,7 @@ class EbtekarResponse
 
     public function getMessageCode(): string
     {
-        return $this->getJson()['message_code'];
+        return $this->getJson()['messageCode'];
     }
 
     public function isMessageCode($code): bool

@@ -11,7 +11,7 @@ trait Validation
      */
     private function validateMsisdn(string $msisdn): void
     {
-        if (! preg_match('/^21809[1-6][0-9]{7}$/i', $msisdn)) {
+        if (! preg_match('/^2189[1-6][0-9]{7}$/i', $msisdn)) {
             throw new Exception('Invalid MSISDN');
         }
     }
