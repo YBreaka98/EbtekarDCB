@@ -4,7 +4,6 @@ namespace Ybreaka98\EbtekarDCB;
 
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Ybreaka98\EbtekarDCB\Commands\EbtekarDCBCommand;
 
 class EbtekarDCBServiceProvider extends PackageServiceProvider
 {
@@ -19,7 +18,5 @@ class EbtekarDCBServiceProvider extends PackageServiceProvider
             ->name('ebtekardcb')
             ->hasConfigFile()
             ->hasViews();
-        //            ->hasMigration('create_ebtekardcb_table')
-        //            ->hasCommand(EbtekarDCBCommand::class);
     }
 }
