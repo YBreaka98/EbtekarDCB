@@ -2,6 +2,4 @@
 
 namespace Ybreaka98\EbtekarDCB\Exceptions;
 
-class ValidationException extends EbtekarException
-{
-}
+class ValidationException extends EbtekarException {}
