@@ -13,16 +13,19 @@ class SubscriptionDetailsResponse extends EbtekarResponse
 
     public function getSubscriberData()
     {
-        return $this->getJson()['success']['subscriber'];
+        $data = $this->getJson();
+        return $data['success']['subscriber'] ?? null;
     }
 
     public function getSubscriberStatus()
     {
-        return $this->getJson()['success']['details']['status'];
+        $data = $this->getJson();
+        return $data['success']['details']['status'] ?? null;
     }
 
     public function getExpirationDate()
     {
-        return $this->getJson()['success']['details']['expiration_date'];
+        $data = $this->getJson();
+        return $data['success']['details']['expiration_date'] ?? null;
     }
 }

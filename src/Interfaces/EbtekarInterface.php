@@ -31,5 +31,8 @@ interface EbtekarInterface
 
     public function subscriptionActivationConfirm(string $msisdn, string $otp, string $device_token = 'android'): EbtekarResponse;
 
-    public function authenticate();
+    public function buyProduct(string $msisdn, string $product_id, string $invoice): EbtekarResponse;
+
+    public function buyProductConfirm(string $msisdn, string $otp, string $product_id, string $invoice): EbtekarResponse;
+
 }

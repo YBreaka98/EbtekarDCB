@@ -11,13 +11,13 @@ class ProtectedScriptResponse extends EbtekarResponse
         parent::__construct($response, $token);
     }
 
-    public function getTransactionIdentify()
+    public function getTransactionIdentify(): ?string
     {
-        return $this->getJson()['success']['transaction_identify'];
+        return $this->getJson()['success']['transaction_identify'] ?? null;
     }
 
-    public function getDcbProtect()
+    public function getDcbProtect(): ?string
     {
-        return $this->getJson()['success']['dcbprotect'];
+        return $this->getJson()['success']['dcbprotect'] ?? null;
     }
 }
