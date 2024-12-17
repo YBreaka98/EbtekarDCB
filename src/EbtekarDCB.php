@@ -20,6 +20,7 @@ class EbtekarDCB implements EbtekarInterface
     use Validation;
 
     private const DEFAULT_DEVICE_TYPE = 'android';
+
     private const PLATFORM = ['ebtekar'];
 
     private string $ebtekarBaseUrl;
@@ -37,6 +38,7 @@ class EbtekarDCB implements EbtekarInterface
 
     /**
      * Make an HTTP request with error handling.
+     *
      * @throws Exception
      */
     private function makeRequest(string $url, string $method, array $data = []): Response
@@ -59,6 +61,7 @@ class EbtekarDCB implements EbtekarInterface
     private function executeRequest(string $apiKey, array $data = []): Response
     {
         $config = $this->getApiConfig($apiKey);
+
         return $this->makeRequest($config['url'], $config['method'], $data);
     }
 

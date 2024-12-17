@@ -34,5 +34,4 @@ interface EbtekarInterface
     public function buyProduct(string $msisdn, string $product_id, string $invoice): EbtekarResponse;
 
     public function buyProductConfirm(string $msisdn, string $otp, string $product_id, string $invoice): EbtekarResponse;
-
 }

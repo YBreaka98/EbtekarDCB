@@ -62,5 +62,5 @@ return [
             'url' => 'buy-product-confirm',
             'method' => 'POST',
         ],
-    ]
+    ],
 ];
