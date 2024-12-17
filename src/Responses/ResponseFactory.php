@@ -6,7 +6,7 @@ use Illuminate\Http\Client\Response;
 
 class ResponseFactory
 {
-    public static function create(string $type, Response $response, string $token): EbtekarResponse
+    public static function create(string $type, Response $response, string $token)
     {
         return match ($type) {
             'protected_script' => new ProtectedScriptResponse($response, $token),
