@@ -1,0 +1,27 @@
+{
+  "name": "ebtekardcb",
+  "version": "1.0.0",
+  "description": "[![Latest Version on Packagist](https://img.shields.io/packagist/v/ybreaka98/ebtekardcb.svg?style=flat-square)](https://packagist.org/packages/ybreaka98/ebtekardcb)\r [![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/ybreaka98/ebtekardcb/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/ybreaka98/ebtekardcb/actions?query=workflow%3Arun-tests+branch%3Amain)\r [![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/ybreaka98/ebtekardcb/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/ybreaka98/ebtekardcb/actions?query=workflow%3A\"Fix+PHP+code+style+issues\"+branch%3Amain)\r [![Total Downloads](https://img.shields.io/packagist/dt/ybreaka98/ebtekardcb.svg?style=flat-square)](https://packagist.org/packages/ybreaka98/ebtekardcb)",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YBreaka98/EbtekarDCB.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/YBreaka98/EbtekarDCB/issues"
+  },
+  "homepage": "https://github.com/YBreaka98/EbtekarDCB#readme",
+  "dependencies": {
+    "@tailwindcss/cli": "^4.0.0",
+    "tailwindcss": "^4.0.0"
+  }
+}

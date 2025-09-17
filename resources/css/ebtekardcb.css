@@ -1,0 +1,178 @@
+@import "tailwindcss";
+
+/* Arabic font imports */
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&family=Tajawal:wght@300;400;500;600;700&display=swap');
+
+/* English font imports */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap');
+
+/* Base styles */
+:root {
+  --ebtekar-primary: #dc2626;
+  --ebtekar-secondary: #1e40af;
+  --ebtekar-success: #10b981;
+  --ebtekar-warning: #f59e0b;
+  --ebtekar-danger: #ef4444;
+}
+
+/* RTL Support */
+.rtl {
+  direction: rtl;
+  text-align: right;
+}
+
+.ltr {
+  direction: ltr;
+  text-align: left;
+}
+
+/* Custom components */
+.ebtekar-btn {
+  @apply px-6 py-3 rounded-lg font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2;
+}
+
+.ebtekar-btn-primary {
+  @apply bg-red-600 text-white hover:bg-red-700 focus:ring-red-500;
+}
+
+.ebtekar-btn-secondary {
+  @apply bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500;
+}
+
+.ebtekar-btn-outline {
+  @apply border-2 border-red-600 text-red-600 hover:bg-red-600 hover:text-white focus:ring-red-500;
+}
+
+.ebtekar-input {
+  @apply w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-colors;
+}
+
+.ebtekar-modal {
+  @apply fixed inset-0 z-50 flex items-center justify-center p-4;
+}
+
+.ebtekar-modal-backdrop {
+  @apply absolute inset-0 bg-black/50 transition-opacity;
+}
+
+.ebtekar-modal-content {
+  @apply relative bg-white rounded-xl shadow-2xl max-w-md w-full transform transition-all;
+}
+
+.ebtekar-card {
+  @apply bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden;
+}
+
+.ebtekar-gradient {
+  background: linear-gradient(135deg, #dc2626 0%, #b91c1c 50%, #991b1b 100%);
+}
+
+.ebtekar-glass {
+  backdrop-filter: blur(4px);
+  @apply bg-white/30 border border-white/20;
+}
+
+/* Loading spinner */
+.ebtekar-spinner {
+  @apply inline-block w-6 h-6 border-2 border-current border-t-transparent rounded-full animate-spin;
+}
+
+/* OTP Input styling */
+.otp-input {
+  @apply w-12 h-12 text-center text-xl font-bold border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-colors;
+}
+
+.otp-input:focus {
+  @apply outline-none;
+}
+
+/* Fraud detection classes - Required by Compliance Protect */
+.cptpl_page {
+  /* Required class for anti-fraud detection */
+}
+
+.cptpl_template {
+  /* Required hidden input for template version */
+}
+
+.cptpl_logo {
+  /* Required class for logo element */
+}
+
+.cptpl_service {
+  /* Required class for service description */
+}
+
+.cptpl_subscribe {
+  /* Required class for CTA button */
+}
+
+.cptpl_price {
+  /* Required class for price information */
+}
+
+.cptpl_terms {
+  /* Required class for terms and conditions */
+}
+
+/* Mobile specific styles */
+@media (max-width: 768px) {
+  .ebtekar-modal-content {
+    @apply mx-4 max-w-none;
+  }
+
+  .ebtekar-btn {
+    @apply w-full justify-center;
+  }
+}
+
+/* Arabic typography improvements */
+.arabic-text {
+  font-family: 'Cairo', 'Tajawal', sans-serif;
+  line-height: 1.8;
+}
+
+.english-text {
+  font-family: 'Inter', 'Roboto', sans-serif;
+  line-height: 1.6;
+}
+
+/* Animation utilities */
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.3s ease-out;
+}
+
+.animate-pulse-subtle {
+  animation: pulseSubtle 2s infinite;
+}
+
+/* Hidden loader utility */
+.hidden_loader {
+  @apply hidden;
+}
+
+/* Custom scrollbar */
+.ebtekar-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #dc2626 #f3f4f6;
+}
+
+.ebtekar-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.ebtekar-scrollbar::-webkit-scrollbar-track {
+  @apply bg-gray-100;
+}
+
+.ebtekar-scrollbar::-webkit-scrollbar-thumb {
+  @apply bg-red-600 rounded-full;
+}
+
+.ebtekar-scrollbar::-webkit-scrollbar-thumb:hover {
+  @apply bg-red-700;
+}
