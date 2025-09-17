@@ -16,7 +16,7 @@ class ConfirmLoginResponse extends EbtekarResponse
         return $this->getJson()['success']['subscriber'] ?? null;
     }
 
-    public function isSubscriberStatus($status): bool
+    public function isSubscriberStatus(string $status): bool
     {
         return $this->getSubscriberStatus() === $status;
     }

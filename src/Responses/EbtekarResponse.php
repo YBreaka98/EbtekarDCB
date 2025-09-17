@@ -8,7 +8,7 @@ class EbtekarResponse
 {
     protected int $statusCode;
 
-    protected ?Response $response;
+    protected Response $response;
 
     protected string $token;
 
@@ -24,7 +24,7 @@ class EbtekarResponse
         return $this->response->status();
     }
 
-    public function getResponse(): object
+    public function getResponse(): Response
     {
         return $this->response;
     }
@@ -74,7 +74,7 @@ class EbtekarResponse
         return $this->getJson()['messageCode'];
     }
 
-    public function isMessageCode($code): bool
+    public function isMessageCode(string $code): bool
     {
         return $this->getMessageCode() == $code;
     }

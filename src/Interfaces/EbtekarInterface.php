@@ -17,7 +17,7 @@ interface EbtekarInterface
 
     public function upgrade(string $msisdn, string $uuid): EbtekarResponse;
 
-    public function upgradeConfirm(string $msisdn, string $otp, string $uuid, $device_token = 'android'): EbtekarResponse;
+    public function upgradeConfirm(string $msisdn, string $otp, string $uuid, string $device_token = 'android'): EbtekarResponse;
 
     public function subscriptionDetails(string $msisdn): SubscriptionDetailsResponse;
 

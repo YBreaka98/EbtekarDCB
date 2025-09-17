@@ -1,11 +1,17 @@
-# ebtekar dcb payment package
+# Ebtekar DCB Payment Package
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/ybreaka98/ebtekardcb.svg?style=flat-square)](https://packagist.org/packages/ybreaka98/ebtekardcb)
 [![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/ybreaka98/ebtekardcb/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/ybreaka98/ebtekardcb/actions?query=workflow%3Arun-tests+branch%3Amain)
 [![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/ybreaka98/ebtekardcb/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/ybreaka98/ebtekardcb/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/ybreaka98/ebtekardcb.svg?style=flat-square)](https://packagist.org/packages/ybreaka98/ebtekardcb)
 
-This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
+A Laravel package for integrating with Ebtekar DCB (Direct Carrier Billing) payment services. This package provides a simple and elegant API for handling mobile subscription payments, user authentication, and subscription management.
+
+## Requirements
+
+- PHP 8.2 or higher
+- Laravel 11.0 or 12.0
+- ext-json
 
 ## Support us
 
@@ -55,8 +61,24 @@ php artisan vendor:publish --tag="ebtekardcb-views"
 ## Usage
 
 ```php
-$ebtekarDCB = new Ybreaka98\EbtekarDCB();
-echo $ebtekarDCB->echoPhrase('Hello, Ybreaka98!');
+use Ybreaka98\EbtekarDCB\Facades\EbtekarDCB;
+
+// Initialize subscription login
+$response = EbtekarDCB::login('218912345678', 'unique_transaction_id');
+
+if ($response->isSuccessful()) {
+    // Handle successful login request
+    $data = $response->getJson();
+}
+
+// Confirm login with OTP
+$confirmResponse = EbtekarDCB::confirmLogin('218912345678', '1234');
+
+// Get subscription details
+$details = EbtekarDCB::subscriptionDetails('218912345678');
+
+// Request protected script
+$script = EbtekarDCB::requestProtectedScript('#payment-button');
 ```
 
 ## Testing
